@@ -62,6 +62,23 @@ async function run() {
 
 
     });
+
+    app.get('/myorder/:email',  async (req, res) => {
+      const email = req.params.email;
+      console.log(email)
+      const userEmail = req.query.email;
+        const query = { email: email }
+        const orders = await ordersCollection.find(query).toArray();
+        res.send(orders)
+    });
+    app.get('/cuisine/:name',  async (req, res) => {
+      const cuisines = req.params.name;
+      
+      const cuisineName = req.query.cuisine;
+        const query = {cuisine: cuisines }
+        const orders = await productCollection.find(query).toArray();
+        res.send(orders)
+    });
     
        
     
